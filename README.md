@@ -10,7 +10,7 @@ The module exports one function:
 getLineRewrite :: [(String, String)] -> IO String
 ```
 
-The argument should be a finite list of rewrite rules of the form `(l, r)` indicating that as soon as the user inputs the substring `l`, it should immediately be rewritten to the substring `r`. For example, to rewrite the substring `\lambda` to `λ`, the function should be called as follows:
+The argument should be a finite list of rewrite rules of the form `(l, r)`, indicating that as soon as the user inputs the substring `l`, it should immediately be rewritten to the substring `r`. For example, to rewrite the substring `\lambda` to `λ`, the function should be called as follows:
 
 ```Haskell
 getLineRewrite [("\\lambda", "λ")]
