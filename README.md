@@ -13,7 +13,7 @@ getLineRewrite :: [(String, String)] -> IO String
 The argument is a list of rewrite rules of the form `(l, r)` indicating that as soon as the user inputs the substring `l`, it should immediately be rewritten to the substring `r`. For example, to rewrite the substring `\lambda` to `λ`, the function should be called as follows:
 
 ```Haskell
-getLineRewrite [("\\lambda","λ")]
+getLineRewrite [("\\lambda", "λ")]
 ```
 
 ![Y Combinator Example](./Y.gif)
