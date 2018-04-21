@@ -48,10 +48,10 @@ setModes (bi, bo, eo) = do hSetBuffering stdin  bi
 
 getLineRewrite :: [(String,String)] -> IO String
 getLineRewrite xs | any (null . fst) xs = error "getLineRewrite called with a rule to rewrite the empty string"
-getLineRewrite xs = do m <- getModes
+getLineRewrite xs = do ms <- getModes
                        setModes (NoBuffering, NoBuffering, False)
                        x <- evalStateT run initialState
-                       setModes m
+                       setModes ms
                        pure (reverse x)
   where
     initialState ::(String, [[Zipper]])
