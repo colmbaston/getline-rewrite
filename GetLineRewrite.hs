@@ -27,8 +27,7 @@ push :: Char -> [Zipper] -> Z ()
 push c zs = modify (bimap (c:) (zs:))
 
 pop :: Z ()
-pop = do s <- fst <$> get
-         unless (null s) (modify (bimap tail tail))
+pop = modify (bimap tail tail)
 
 ansiErase :: Int -> IO ()
 ansiErase n = do putStr "\ESC["
@@ -69,8 +68,9 @@ getLineRewrite xs = do ms <- getModes
     handler :: Char -> Z Bool
     handler '\n'   = do liftIO (putChar '\n')
                         pure True
-    handler '\DEL' = do liftIO (ansiErase 1)
-                        pop
+    handler '\DEL' = do x <- fst <$> get
+                        unless (null x)
+                          (liftIO (ansiErase 1) >> pop)
                         pure False
     handler '\ESC' =    pure False
     handler c      = do zs <- head . snd <$> get
