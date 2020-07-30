@@ -10,7 +10,7 @@ import           Control.Monad.State
 type Zipper = (String, String)
 
 updateZippers :: Char -> [Zipper] -> Either String [Zipper]
-updateZippers c = merge <$> mapM f
+updateZippers c zs = merge <$> mapM f zs
   where
     f :: Zipper -> Either String [Zipper]
     f z@(xs, y:ys) | c /= y    = Right [([], foldl (flip (:)) ys (y:xs))]
