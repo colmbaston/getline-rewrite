@@ -5,7 +5,9 @@ import           Data.Map (Map)
 import qualified Data.Map as M
 import           Data.Bifunctor
 import           System.IO
-import           Control.Monad.State
+import           Control.Monad
+import           Control.Monad.IO.Class
+import           Control.Monad.Trans.State
 
 type Zipper = (String, String)
 

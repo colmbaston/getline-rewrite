@@ -11,6 +11,6 @@ extra-source-files:  README.md
 library
   exposed-modules:     GetLineRewrite
   default-language:    Haskell2010
-  build-depends:       base       ^>= 4.14,
-                       containers ^>= 0.6,
-                       mtl        ^>= 2.2
+  build-depends:       base         ^>= 4.14,
+                       containers   ^>= 0.6,
+                       transformers ^>= 0.5
